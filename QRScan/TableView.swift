@@ -6,6 +6,11 @@
 //  Copyright © 2016 Antonino Febbraro. All rights reserved.
 //
 
+
+/*
+    THIS CODE DEALS WITH ADDING SCANNED ITEMS TO THE TABLE VIEW ON THE "SCANNED ITEMS" PAGE OF THE APP
+ */
+
 import Foundation
 import UIKit
 

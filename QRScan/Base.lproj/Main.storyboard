@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Scan Item-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="ScannerViewController" customModule="QRScan" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,22 +30,52 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan Complete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJF-M5-Q9f">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="Ohl-xM-zgC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ta-Fy-Igq">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Scan Again">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ContinueScanning:" destination="9pv-A4-QxB" eventType="touchUpInside" id="nlM-t3-TVS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="WJF-M5-Q9f" secondAttribute="bottom" constant="76" id="5LJ-Wp-GC2"/>
                             <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
+                            <constraint firstItem="9Ta-Fy-Igq" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="167" id="Klp-Ug-sD1"/>
+                            <constraint firstItem="KQZ-1w-vlD" firstAttribute="top" secondItem="9Ta-Fy-Igq" secondAttribute="bottom" constant="42" id="NeO-RO-c8H"/>
                             <constraint firstItem="A5M-7J-77L" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="8" symbolic="YES" id="cfb-er-3JN"/>
                             <constraint firstItem="A5M-7J-77L" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="e1l-AV-tCB"/>
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
+                            <constraint firstItem="9Ta-Fy-Igq" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="94" id="gCB-hR-NJI"/>
+                            <constraint firstItem="9Ta-Fy-Igq" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="jDZ-2J-1Gx"/>
+                            <constraint firstItem="WJF-M5-Q9f" firstAttribute="trailing" secondItem="KQZ-1w-vlD" secondAttribute="trailing" id="pkh-L7-khQ"/>
+                            <constraint firstItem="WJF-M5-Q9f" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="rLX-Aq-j2Z"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Scan Item" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="ScanCompLabel" destination="WJF-M5-Q9f" id="WpF-HQ-Mgb"/>
+                        <outlet property="contButn" destination="9Ta-Fy-Igq" id="GZr-fd-8wk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
-        <!--Second-->
+        <!--Scanned Items-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="TableView" customModule="QRScan" customModuleProvider="target" sceneMemberID="viewController">
@@ -84,7 +114,7 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Scanned Items" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="tableView" destination="co1-21-16p" id="El6-hj-14J"/>
                     </connections>

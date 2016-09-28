@@ -6,7 +6,9 @@
 //  Copyright © 2016 Antonino Febbraro. All rights reserved.
 //
 
-//Testing commit
+/*
+    CODE THAT DEALS WITH THE QR SCANNER AND CAMERA FUNCTIONALITY
+ */
 
 import Foundation
 import AVFoundation
@@ -16,6 +18,8 @@ import UIKit
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    @IBOutlet weak var contButn: UIButton!
+    @IBOutlet weak var ScanCompLabel: UILabel!
     
     struct Constants{
         static var TitleArray = [String]()
@@ -23,6 +27,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        contButn.isHidden = true
+        contButn.isEnabled = false
+        ScanCompLabel.isHidden = true
         
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
@@ -59,6 +67,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         previewLayer.frame = view.layer.bounds;
         previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
         view.layer.addSublayer(previewLayer);
+        
+        // put it behind all other subviews
+        self.view.layer.insertSublayer(previewLayer, at: 0)
+        // or, put it underneath your buttons, as long as you know which one is the lowest subview
+        self.view.layer.insertSublayer(previewLayer, below: contButn.layer)
+        self.view.layer.insertSublayer(previewLayer, below: ScanCompLabel.layer)
         
         captureSession.startRunning();
     }
@@ -104,9 +118,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         print(code)
         Constants.TitleArray.append(code)
         
-        if (captureSession?.isRunning == false) {
-            captureSession.startRunning();
-        }
+        contButn.isHidden = false
+        contButn.isEnabled = true
+        ScanCompLabel.isHidden = false
+        
+
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -117,6 +133,15 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         return .portrait
     }
     
+    @IBAction func ContinueScanning(_ sender: AnyObject) {
+        if (captureSession?.isRunning == false) {
+            
+            contButn.isHidden = true
+            contButn.isEnabled = false
+            ScanCompLabel.isHidden = true
+            captureSession.startRunning();
+        }
+    }
     
     
     
